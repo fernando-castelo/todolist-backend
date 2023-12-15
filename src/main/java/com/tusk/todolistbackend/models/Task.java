@@ -1,9 +1,6 @@
 package com.tusk.todolistbackend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -15,6 +12,7 @@ public class Task {
     private UUID id;
     private String title;
     private String description;
+    @Column(columnDefinition = "boolean default false")
     private boolean completed;
 
     public UUID getId() {
