@@ -17,6 +17,10 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
+    public List<Task> findAllTasks() {
+        return taskRepository.findAll();
+    }
+
     public List<Task> findCompletedTasks() {
         return taskRepository.findByCompletedTrue();
     }

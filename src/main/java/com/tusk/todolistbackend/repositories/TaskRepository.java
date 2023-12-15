@@ -11,6 +11,8 @@ import java.util.UUID;
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 
     public Optional<Task> findById(UUID id);
+
+    public List<Task> findAll();
     public List<Task> findByCompletedTrue();
 
     public List<Task> findByCompletedFalse();

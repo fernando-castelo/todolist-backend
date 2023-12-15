@@ -22,12 +22,16 @@ public class TaskController {
         this.taskService = taskService;
     }
     @GetMapping("/")
-    public ResponseEntity<List<Task>> getTasks(@RequestParam(name = "completed", required = false) Boolean completed) {
-        if (completed != null && completed) {
+    public ResponseEntity<List<Task>> getTasks(@RequestParam(name = "status", required = false) String status) {
+        if ("completed".equals(status)) {
             return ResponseEntity.ok(taskService.findCompletedTasks());
-        } else {
+        }
+
+        if ("uncompleted".equals(status)) {
             return ResponseEntity.ok(taskService.findUncompletedTasks());
         }
+
+        return ResponseEntity.ok(taskService.findAllTasks());
     }
 
     @GetMapping("/{id}")
