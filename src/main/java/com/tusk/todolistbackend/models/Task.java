@@ -15,6 +15,8 @@ public class Task {
     @Column(columnDefinition = "boolean default false")
     private boolean completed;
 
+    private String category;
+
     public UUID getId() {
         return id;
     }
@@ -45,5 +47,13 @@ public class Task {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

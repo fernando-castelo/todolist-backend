@@ -1,9 +1,7 @@
 package com.tusk.todolistbackend.controllers;
 
-import com.sun.source.util.TaskListener;
 import com.tusk.todolistbackend.models.Task;
 import com.tusk.todolistbackend.services.TaskService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@CrossOrigin
 @Controller
 @RequestMapping("/tasks")
 public class TaskController {
@@ -23,11 +22,18 @@ public class TaskController {
     }
     @GetMapping("/")
     public ResponseEntity<List<Task>> getTasks(@RequestParam(name = "status", required = false) String status) {
-        if ("completed".equals(status)) {
+
+        System.out.println(status);
+
+        if (status.equals("completed")) {
+            System.out.println("completed");
             return ResponseEntity.ok(taskService.findCompletedTasks());
         }
 
-        if ("uncompleted".equals(status)) {
+        System.out.println(status.trim().equalsIgnoreCase("uncompleted"));
+
+        if (status.trim().equalsIgnoreCase("uncompleted")) {
+            System.out.println("uncompleted");
             return ResponseEntity.ok(taskService.findUncompletedTasks());
         }
 
